@@ -1,13 +1,31 @@
 #include <stdio.h>
+#include <stdbool.h>
 
-int main(void)
+int main ()
 {
-    int i;
+    int age; bool teenager;
 
-    i = 1;
-    while (i <= 128){
-        printf("%d ", i);
-        i *= 2;
+    teenager = false;
+
+    //prompt
+    printf("Enter age here: ");
+    scanf("%d", &age);
+
+    //valid int values are between 13-19 inclusively
+    if (13 <= age && age <= 19)
+    {
+        teenager = true;
+    }
+    
+    //ff. conditional statements generate a more informative output
+    if (teenager)
+    {
+        printf("A person who is %d is considered a teenager", age);
+    }
+
+    else
+    {
+        printf("A person who is %d is not considered a teengager", age);
     }
     
     return 0;
