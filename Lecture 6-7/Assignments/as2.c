@@ -21,7 +21,6 @@ int main()
 
     //true values for conditions requiring charging stations C and D
     int is_charging_station[N] = {[2] = 1, [3] = 1};       
-
     
     int i, j;
 
