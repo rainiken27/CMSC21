@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <ctype.h> /* toupper, isalpha */
+#include <stdbool.h> 
+
+//function prototypes
+void scan_word(int *occurrences);
+bool is_anagram(int *occurrences1, int *occurrences2);
+
+int main(void) {
+
+    int occurrences1[26] = {0};
+    int occurrences2[26] = {0};
+
+    //updates both occurrences array
+    scan_word(occurrences1);
+    scan_word(occurrences2);
+
+    //informative output for user
+    if (is_anagram(occurrences1, occurrences2)) {
+        printf("The words are anagrams\n");
+    }
+    else {
+        printf("The words are not anagrams\n");
+    }
+}
+
+//tracks the number of times a letter appears in a word
+void scan_word (int *occurrences) { 
+    char c;
+
+    //prompt
+    printf("Enter a word: ");
+    while ((c = getchar()) != '\n') {
+        if (isalpha(c)){
+
+            //increments the array element that corresponds to the position of the letter on the alphabet
+            (*(occurrences + (toupper(c) - 'A')))++;
+        }
+    }
+}
+
+//checks if both words are anagrams of each other
+bool is_anagram (int *occurrences1, int *occurrences2) {
+    for (int i = 0; i < 26; i++) {
+        //returns false if a letter has unequal instance/s between arrays
+        if ((*(occurrences1 + i)) != (*(occurrences2 + i))) {  
+            return false;                                
+        }
+    }
+    
+    //returns true if all 26 letters have equal instances in both arrays
+    return true;
+}
